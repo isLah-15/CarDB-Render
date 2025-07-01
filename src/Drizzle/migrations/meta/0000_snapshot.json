@@ -1,0 +1,543 @@
+{
+  "id": "aca7a7b8-b4b2-4dcd-aedd-2549366990c8",
+  "prevId": "00000000-0000-0000-0000-000000000000",
+  "version": "7",
+  "dialect": "postgresql",
+  "tables": {
+    "public.Booking": {
+      "name": "Booking",
+      "schema": "",
+      "columns": {
+        "Booking ID": {
+          "name": "Booking ID",
+          "type": "serial",
+          "primaryKey": true,
+          "notNull": true
+        },
+        "Customer ID": {
+          "name": "Customer ID",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "Car ID": {
+          "name": "Car ID",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "Rental Start Date": {
+          "name": "Rental Start Date",
+          "type": "timestamp",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "Rental End Date": {
+          "name": "Rental End Date",
+          "type": "timestamp",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "Total Amount": {
+          "name": "Total Amount",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true
+        }
+      },
+      "indexes": {},
+      "foreignKeys": {
+        "Booking_Customer ID_Customer_Customer ID_fk": {
+          "name": "Booking_Customer ID_Customer_Customer ID_fk",
+          "tableFrom": "Booking",
+          "tableTo": "Customer",
+          "columnsFrom": [
+            "Customer ID"
+          ],
+          "columnsTo": [
+            "Customer ID"
+          ],
+          "onDelete": "cascade",
+          "onUpdate": "no action"
+        },
+        "Booking_Car ID_Car_Car ID_fk": {
+          "name": "Booking_Car ID_Car_Car ID_fk",
+          "tableFrom": "Booking",
+          "tableTo": "Car",
+          "columnsFrom": [
+            "Car ID"
+          ],
+          "columnsTo": [
+            "Car ID"
+          ],
+          "onDelete": "cascade",
+          "onUpdate": "no action"
+        }
+      },
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {},
+      "policies": {},
+      "checkConstraints": {},
+      "isRLSEnabled": false
+    },
+    "public.Car": {
+      "name": "Car",
+      "schema": "",
+      "columns": {
+        "Car ID": {
+          "name": "Car ID",
+          "type": "serial",
+          "primaryKey": true,
+          "notNull": true
+        },
+        "Car Model": {
+          "name": "Car Model",
+          "type": "varchar",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "Manufacturer": {
+          "name": "Manufacturer",
+          "type": "varchar",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "Year": {
+          "name": "Year",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "Color": {
+          "name": "Color",
+          "type": "varchar",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "Rental Rate": {
+          "name": "Rental Rate",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "Availability": {
+          "name": "Availability",
+          "type": "boolean",
+          "primaryKey": false,
+          "notNull": true
+        }
+      },
+      "indexes": {},
+      "foreignKeys": {},
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {},
+      "policies": {},
+      "checkConstraints": {},
+      "isRLSEnabled": false
+    },
+    "public.Customer": {
+      "name": "Customer",
+      "schema": "",
+      "columns": {
+        "Customer ID": {
+          "name": "Customer ID",
+          "type": "serial",
+          "primaryKey": true,
+          "notNull": true
+        },
+        "First Name": {
+          "name": "First Name",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "Last Name": {
+          "name": "Last Name",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "Email": {
+          "name": "Email",
+          "type": "varchar",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "Phone": {
+          "name": "Phone",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "Password": {
+          "name": "Password",
+          "type": "varchar",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "Role": {
+          "name": "Role",
+          "type": "varchar",
+          "primaryKey": false,
+          "notNull": false,
+          "default": "'customer'"
+        },
+        "Address": {
+          "name": "Address",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "Verification Code": {
+          "name": "Verification Code",
+          "type": "varchar",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "Is Verified": {
+          "name": "Is Verified",
+          "type": "boolean",
+          "primaryKey": false,
+          "notNull": false,
+          "default": false
+        }
+      },
+      "indexes": {},
+      "foreignKeys": {},
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {
+        "Customer_Email_unique": {
+          "name": "Customer_Email_unique",
+          "nullsNotDistinct": false,
+          "columns": [
+            "Email"
+          ]
+        }
+      },
+      "policies": {},
+      "checkConstraints": {},
+      "isRLSEnabled": false
+    },
+    "public.Insurance": {
+      "name": "Insurance",
+      "schema": "",
+      "columns": {
+        "Insurance ID": {
+          "name": "Insurance ID",
+          "type": "serial",
+          "primaryKey": true,
+          "notNull": true
+        },
+        "Car ID": {
+          "name": "Car ID",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "Provider": {
+          "name": "Provider",
+          "type": "varchar",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "Policy Number": {
+          "name": "Policy Number",
+          "type": "varchar",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "Start Date": {
+          "name": "Start Date",
+          "type": "timestamp",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "End Date": {
+          "name": "End Date",
+          "type": "timestamp",
+          "primaryKey": false,
+          "notNull": true
+        }
+      },
+      "indexes": {},
+      "foreignKeys": {
+        "Insurance_Car ID_Car_Car ID_fk": {
+          "name": "Insurance_Car ID_Car_Car ID_fk",
+          "tableFrom": "Insurance",
+          "tableTo": "Car",
+          "columnsFrom": [
+            "Car ID"
+          ],
+          "columnsTo": [
+            "Car ID"
+          ],
+          "onDelete": "cascade",
+          "onUpdate": "no action"
+        }
+      },
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {},
+      "policies": {},
+      "checkConstraints": {},
+      "isRLSEnabled": false
+    },
+    "public.Location": {
+      "name": "Location",
+      "schema": "",
+      "columns": {
+        "Location ID": {
+          "name": "Location ID",
+          "type": "serial",
+          "primaryKey": true,
+          "notNull": true
+        },
+        "Car ID": {
+          "name": "Car ID",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "Location Name": {
+          "name": "Location Name",
+          "type": "varchar",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "Address": {
+          "name": "Address",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "Contact Number": {
+          "name": "Contact Number",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true
+        }
+      },
+      "indexes": {},
+      "foreignKeys": {
+        "Location_Car ID_Car_Car ID_fk": {
+          "name": "Location_Car ID_Car_Car ID_fk",
+          "tableFrom": "Location",
+          "tableTo": "Car",
+          "columnsFrom": [
+            "Car ID"
+          ],
+          "columnsTo": [
+            "Car ID"
+          ],
+          "onDelete": "cascade",
+          "onUpdate": "no action"
+        }
+      },
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {},
+      "policies": {},
+      "checkConstraints": {},
+      "isRLSEnabled": false
+    },
+    "public.Maintenance": {
+      "name": "Maintenance",
+      "schema": "",
+      "columns": {
+        "Maintenance ID": {
+          "name": "Maintenance ID",
+          "type": "serial",
+          "primaryKey": true,
+          "notNull": true
+        },
+        "Car ID": {
+          "name": "Car ID",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "Maintenance Date": {
+          "name": "Maintenance Date",
+          "type": "timestamp",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "Description": {
+          "name": "Description",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "Cost": {
+          "name": "Cost",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true
+        }
+      },
+      "indexes": {},
+      "foreignKeys": {
+        "Maintenance_Car ID_Car_Car ID_fk": {
+          "name": "Maintenance_Car ID_Car_Car ID_fk",
+          "tableFrom": "Maintenance",
+          "tableTo": "Car",
+          "columnsFrom": [
+            "Car ID"
+          ],
+          "columnsTo": [
+            "Car ID"
+          ],
+          "onDelete": "cascade",
+          "onUpdate": "no action"
+        }
+      },
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {},
+      "policies": {},
+      "checkConstraints": {},
+      "isRLSEnabled": false
+    },
+    "public.Payment": {
+      "name": "Payment",
+      "schema": "",
+      "columns": {
+        "Payment ID": {
+          "name": "Payment ID",
+          "type": "serial",
+          "primaryKey": true,
+          "notNull": true
+        },
+        "Booking ID": {
+          "name": "Booking ID",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "Payment Date": {
+          "name": "Payment Date",
+          "type": "timestamp",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "Amount": {
+          "name": "Amount",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "Payment Method": {
+          "name": "Payment Method",
+          "type": "varchar",
+          "primaryKey": false,
+          "notNull": true
+        }
+      },
+      "indexes": {},
+      "foreignKeys": {
+        "Payment_Booking ID_Booking_Booking ID_fk": {
+          "name": "Payment_Booking ID_Booking_Booking ID_fk",
+          "tableFrom": "Payment",
+          "tableTo": "Booking",
+          "columnsFrom": [
+            "Booking ID"
+          ],
+          "columnsTo": [
+            "Booking ID"
+          ],
+          "onDelete": "cascade",
+          "onUpdate": "no action"
+        }
+      },
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {},
+      "policies": {},
+      "checkConstraints": {},
+      "isRLSEnabled": false
+    },
+    "public.Reservation": {
+      "name": "Reservation",
+      "schema": "",
+      "columns": {
+        "Reservation ID": {
+          "name": "Reservation ID",
+          "type": "serial",
+          "primaryKey": true,
+          "notNull": true
+        },
+        "Customer ID": {
+          "name": "Customer ID",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "Car ID": {
+          "name": "Car ID",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "Reservation Date": {
+          "name": "Reservation Date",
+          "type": "timestamp",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "Pickup Date": {
+          "name": "Pickup Date",
+          "type": "timestamp",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "Return Date": {
+          "name": "Return Date",
+          "type": "timestamp",
+          "primaryKey": false,
+          "notNull": true
+        }
+      },
+      "indexes": {},
+      "foreignKeys": {
+        "Reservation_Customer ID_Customer_Customer ID_fk": {
+          "name": "Reservation_Customer ID_Customer_Customer ID_fk",
+          "tableFrom": "Reservation",
+          "tableTo": "Customer",
+          "columnsFrom": [
+            "Customer ID"
+          ],
+          "columnsTo": [
+            "Customer ID"
+          ],
+          "onDelete": "cascade",
+          "onUpdate": "no action"
+        },
+        "Reservation_Car ID_Car_Car ID_fk": {
+          "name": "Reservation_Car ID_Car_Car ID_fk",
+          "tableFrom": "Reservation",
+          "tableTo": "Car",
+          "columnsFrom": [
+            "Car ID"
+          ],
+          "columnsTo": [
+            "Car ID"
+          ],
+          "onDelete": "cascade",
+          "onUpdate": "no action"
+        }
+      },
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {},
+      "policies": {},
+      "checkConstraints": {},
+      "isRLSEnabled": false
+    }
+  },
+  "enums": {},
+  "schemas": {},
+  "sequences": {},
+  "roles": {},
+  "policies": {},
+  "views": {},
+  "_meta": {
+    "columns": {},
+    "schemas": {},
+    "tables": {}
+  }
+}

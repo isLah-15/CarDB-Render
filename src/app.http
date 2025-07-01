@@ -1,0 +1,39 @@
+###
+GET http://localhost:8081/
+
+### Create booking
+POST http://localhost:8081/booking
+Content-Type: application/json
+
+{
+ "customerId": "1",
+    "carId": "1",
+    "rentalStartDate": "2025-09-03",
+    "rentalEndDate": "2025-09-03",
+    "totalAmount": "4000"
+}
+
+
+###Get all booking
+GET  http://localhost:8081/booking
+
+###Get all cars
+Get http://localhost:8081/car
+
+###Get all customers
+Get http://localhost:8081/customer
+
+###Get all insurance
+Get http://localhost:8081/insurance
+
+###Get all location
+Get http://localhost:8081/location
+
+###Get all maintenance
+Get http://localhost:8081/maintenance
+
+###Get all payment
+Get http://localhost:8081/payment
+
+###Get all reservation
+Get http://localhost:8081/reservation
